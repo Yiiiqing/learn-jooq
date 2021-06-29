@@ -13,6 +13,7 @@
     <maven.compiler.target>8</maven.compiler.target>
     <jooq.version>3.9.5</jooq.version>
     <jooq.packageName>zone.yiqing.learnjooq</jooq.packageName>
+    <mysql.connector.version>5.1.30</mysql.connector.version>
   </properties>
 
   <dependencies>
@@ -35,7 +36,34 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.30</version>
+      <version>${mysql.connector.version}</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq-codegen-maven</artifactId>
+        <version>${jooq.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <configurationFile>src/main/resources/library.xml</configurationFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

@@ -39,6 +39,13 @@
       <excludes></excludes>
     </database>
 
+    <!-- 配置生成 dao,interface,pojo-->
+    <generate>
+      <daos>true</daos>
+      <interfaces>true</interfaces>
+      <pojos>true</pojos>
+    </generate>
+
     <target>
       <!-- The destination package of your generated classes (within the destination directory) -->
       <!-- 生成的包名，生成的类在此包下 -->
